@@ -1,0 +1,45 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <div class="page-heading">
+        <div>
+            <h1 class="h3 mb-1">Admin Dashboard</h1>
+            <p class="text-secondary mb-0">Centralized appointment, patient, and schedule management.</p>
+        </div>
+        <a class="btn btn-primary" href="{% url 'add_schedule' %}">Add Schedule</a>
+    </div>
+    <div class="row g-3 my-3">
+        <div class="col-sm-6 col-lg-3"><div class="stat-card"><span>Total Patients</span><strong>{{ stats.patients }}</strong></div></div>
+        <div class="col-sm-6 col-lg-3"><div class="stat-card"><span>Total Appointments</span><strong>{{ stats.appointments }}</strong></div></div>
+        <div class="col-sm-6 col-lg-3"><div class="stat-card"><span>Available Slots</span><strong>{{ stats.available_slots }}</strong></div></div>
+        <div class="col-sm-6 col-lg-3"><div class="stat-card"><span>Booked Slots</span><strong>{{ stats.booked_slots }}</strong></div></div>
+    </div>
+    <div class="quick-actions mb-4">
+        <a class="btn btn-outline-primary" href="{% url 'manage_schedules' %}">Manage Schedules</a>
+        <a class="btn btn-outline-primary" href="{% url 'manage_patients' %}">Manage Patients</a>
+        <a class="btn btn-outline-primary" href="{% url 'manage_appointments' %}">Manage Appointments</a>
+        <a class="btn btn-outline-secondary" href="/admin/">Django Admin</a>
+    </div>
+    <div class="table-shell">
+        <h2 class="h5">Recent Appointments</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead><tr><th>Patient</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+                <tbody>
+                {% for appointment in recent_appointments %}
+                    <tr>
+                        <td>{{ appointment.patient.user.get_full_name|default:appointment.patient.user.email }}</td>
+                        <td>{{ appointment.schedule.appointment_date }}</td>
+                        <td>{{ appointment.schedule.appointment_time|time:'H:i' }}</td>
+                        <td><span class="badge status-{{ appointment.status|lower }}">{{ appointment.status }}</span></td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="4" class="text-muted">No appointments yet.</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

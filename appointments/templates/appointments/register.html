@@ -1,0 +1,14 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Register | Hospital Appointment Scheduler{% endblock %}
+{% block content %}
+<div class="container py-5 auth-wrap">
+    <div class="auth-card">
+        <h1 class="h3 text-primary mb-3">Patient Registration</h1>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% include 'appointments/form_fields.html' %}
+            <button class="btn btn-primary w-100" type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

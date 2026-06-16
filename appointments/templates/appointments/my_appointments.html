@@ -1,0 +1,37 @@
+{% extends 'appointments/base.html' %}
+{% block title %}My Appointments{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <div class="page-heading">
+        <h1 class="h3">My Appointments</h1>
+        <a class="btn btn-primary" href="{% url 'available_slots' %}">New Appointment</a>
+    </div>
+    <div class="table-shell">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead><tr><th>Date</th><th>Time</th><th>Reason</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.schedule.appointment_date }}</td>
+                        <td>{{ appointment.schedule.appointment_time|time:'H:i' }}</td>
+                        <td>{{ appointment.reason_for_visit }}</td>
+                        <td><span class="badge status-{{ appointment.status|lower }}">{{ appointment.status }}</span></td>
+                        <td class="text-end">
+                            {% if appointment.status != 'Cancelled' %}
+                                <form method="post" action="{% url 'cancel_appointment' appointment.id %}" data-confirm="Cancel this appointment?">
+                                    {% csrf_token %}
+                                    <button class="btn btn-outline-danger btn-sm" type="submit">Cancel</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="5" class="text-muted">No appointment history.</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

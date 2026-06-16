@@ -1,0 +1,15 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Book Appointment{% endblock %}
+{% block content %}
+<div class="container py-5 auth-wrap">
+    <div class="auth-card">
+        <h1 class="h3 text-primary">Book Appointment</h1>
+        <p class="text-secondary">{{ schedule.appointment_date }} at {{ schedule.appointment_time|time:'H:i' }}</p>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% include 'appointments/form_fields.html' %}
+            <button class="btn btn-primary w-100" type="submit">Confirm Appointment</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

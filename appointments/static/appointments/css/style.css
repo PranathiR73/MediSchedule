@@ -1,0 +1,159 @@
+:root {
+    --hospital-blue: #1769aa;
+    --hospital-teal: #0f9f8f;
+    --soft-bg: #f5f8fb;
+    --ink: #1f2937;
+}
+
+body {
+    background: var(--soft-bg);
+    color: var(--ink);
+}
+
+.bg-primary,
+.btn-primary {
+    background-color: var(--hospital-blue) !important;
+    border-color: var(--hospital-blue) !important;
+}
+
+.text-primary {
+    color: var(--hospital-blue) !important;
+}
+
+.hero-section {
+    background: linear-gradient(120deg, #ffffff 0%, #eaf7f6 100%);
+    border-bottom: 1px solid #d8e6ef;
+}
+
+.feature-panel,
+.auth-card,
+.table-shell,
+.stat-card,
+.info-card {
+    background: #ffffff;
+    border: 1px solid #dce7ef;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
+}
+
+.feature-panel {
+    padding: 2rem;
+    border-left: 5px solid var(--hospital-teal);
+}
+
+.auth-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    width: min(100%, 520px);
+    padding: 2rem;
+}
+
+.auth-card input,
+.auth-card textarea,
+.auth-card select,
+.filter-bar input,
+.filter-bar select {
+    display: block;
+    width: 100%;
+    padding: .55rem .75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card {
+    padding: 1.25rem;
+    border-top: 4px solid var(--hospital-teal);
+}
+
+.stat-card span {
+    display: block;
+    color: #64748b;
+    font-size: .9rem;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+.table-shell {
+    padding: 1rem;
+}
+
+.slot-row,
+.quick-actions,
+.filter-bar,
+.status-form {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.slot-row {
+    justify-content: space-between;
+    border-top: 1px solid #e5edf3;
+    padding: .75rem 0;
+}
+
+.filter-bar {
+    margin-bottom: 1rem;
+}
+
+.status-form {
+    min-width: 220px;
+}
+
+.info-card {
+    height: 100%;
+    padding: 1.25rem;
+}
+
+.info-card strong,
+.info-card span {
+    display: block;
+}
+
+.contact-list li {
+    margin-bottom: .6rem;
+}
+
+.status-confirmed {
+    background: #198754;
+}
+
+.status-completed {
+    background: #0d6efd;
+}
+
+.status-cancelled {
+    background: #dc3545;
+}
+
+@media (max-width: 768px) {
+    .page-heading,
+    .filter-bar,
+    .quick-actions,
+    .status-form {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .page-heading .btn,
+    .filter-bar .btn,
+    .quick-actions .btn,
+    .status-form .btn {
+        width: 100%;
+    }
+}

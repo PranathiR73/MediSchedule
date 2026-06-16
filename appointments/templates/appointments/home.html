@@ -1,0 +1,24 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Home | Hospital Appointment Scheduler{% endblock %}
+{% block content %}
+<section class="hero-section">
+    <div class="container py-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <h1 class="display-5 fw-bold text-primary">Hospital Appointment Scheduler</h1>
+                <p class="lead text-secondary">Book verified hospital appointment slots, manage visits, and keep care teams organized through a secure dashboard.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-primary btn-lg" href="{% url 'available_slots' %}">View Slots</a>
+                    <a class="btn btn-outline-primary btn-lg" href="{% url 'register' %}">Register as Patient</a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="feature-panel">
+                    <h2 class="h5">Today at CareLine</h2>
+                    <p class="mb-0">Fast registration, protected booking, clear appointment history, and centralized staff control.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
