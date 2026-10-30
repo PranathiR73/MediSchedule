@@ -124,6 +124,7 @@ To make a user staff from the Django admin:
 3. Enable `Staff status`.
 4. Save the user.
 
+
 ## Useful Commands
 Run migrations:python manage.py migrate
 Create new migrations after model changes: python manage.py makemigrations
