@@ -1,7 +1,5 @@
 from django.contrib import admin
-
 from .models import Appointment, Patient, Schedule
-
 
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
@@ -16,13 +14,11 @@ class PatientAdmin(admin.ModelAdmin):
     def email(self, obj):
         return obj.user.email
 
-
 @admin.register(Schedule)
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = ('appointment_date', 'appointment_time', 'is_booked')
     list_filter = ('is_booked', 'appointment_date')
     search_fields = ('appointment_date',)
-
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
